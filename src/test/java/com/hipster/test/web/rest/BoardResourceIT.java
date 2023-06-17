@@ -42,19 +42,6 @@ class BoardResourceIT {
 
     private static final Boolean DEFAULT_DEL_AT = false;
     private static final Boolean UPDATED_DEL_AT = true;
-
-    private static final String DEFAULT_OXPR_NM = "AAAAAAAAAA";
-    private static final String UPDATED_OXPR_NM = "BBBBBBBBBB";
-
-    private static final LocalDate DEFAULT_ISU_YMD = LocalDate.ofEpochDay(0L);
-    private static final LocalDate UPDATED_ISU_YMD = LocalDate.now(ZoneId.systemDefault());
-
-    private static final String DEFAULT_LINK = "AAAAAAAAAA";
-    private static final String UPDATED_LINK = "BBBBBBBBBB";
-
-    private static final Boolean DEFAULT_CONECT_AT = false;
-    private static final Boolean UPDATED_CONECT_AT = true;
-
     private static final String ENTITY_API_URL = "/api/boards";
     private static final String ENTITY_API_URL_ID = ENTITY_API_URL + "/{id}";
 
@@ -82,14 +69,7 @@ class BoardResourceIT {
      * if they test an entity which requires the current entity.
      */
     public static Board createEntity(EntityManager em) {
-        Board board = new Board()
-            .title(DEFAULT_TITLE)
-            .content(DEFAULT_CONTENT)
-            .delAt(DEFAULT_DEL_AT)
-            .oxprNm(DEFAULT_OXPR_NM)
-            .isuYmd(DEFAULT_ISU_YMD)
-            .link(DEFAULT_LINK)
-            .conectAt(DEFAULT_CONECT_AT);
+        Board board = new Board().title(DEFAULT_TITLE).content(DEFAULT_CONTENT).delAt(DEFAULT_DEL_AT);
         return board;
     }
 
@@ -100,14 +80,7 @@ class BoardResourceIT {
      * if they test an entity which requires the current entity.
      */
     public static Board createUpdatedEntity(EntityManager em) {
-        Board board = new Board()
-            .title(UPDATED_TITLE)
-            .content(UPDATED_CONTENT)
-            .delAt(UPDATED_DEL_AT)
-            .oxprNm(UPDATED_OXPR_NM)
-            .isuYmd(UPDATED_ISU_YMD)
-            .link(UPDATED_LINK)
-            .conectAt(UPDATED_CONECT_AT);
+        Board board = new Board().title(UPDATED_TITLE).content(UPDATED_CONTENT).delAt(UPDATED_DEL_AT);
         return board;
     }
 
@@ -138,10 +111,6 @@ class BoardResourceIT {
         assertThat(testBoard.getTitle()).isEqualTo(DEFAULT_TITLE);
         assertThat(testBoard.getContent()).isEqualTo(DEFAULT_CONTENT);
         assertThat(testBoard.getDelAt()).isEqualTo(DEFAULT_DEL_AT);
-        assertThat(testBoard.getOxprNm()).isEqualTo(DEFAULT_OXPR_NM);
-        assertThat(testBoard.getIsuYmd()).isEqualTo(DEFAULT_ISU_YMD);
-        assertThat(testBoard.getLink()).isEqualTo(DEFAULT_LINK);
-        assertThat(testBoard.getConectAt()).isEqualTo(DEFAULT_CONECT_AT);
     }
 
     @Test
@@ -182,11 +151,7 @@ class BoardResourceIT {
             .andExpect(jsonPath("$.[*].id").value(hasItem(board.getId().intValue())))
             .andExpect(jsonPath("$.[*].title").value(hasItem(DEFAULT_TITLE)))
             .andExpect(jsonPath("$.[*].content").value(hasItem(DEFAULT_CONTENT)))
-            .andExpect(jsonPath("$.[*].delAt").value(hasItem(DEFAULT_DEL_AT.booleanValue())))
-            .andExpect(jsonPath("$.[*].oxprNm").value(hasItem(DEFAULT_OXPR_NM)))
-            .andExpect(jsonPath("$.[*].isuYmd").value(hasItem(DEFAULT_ISU_YMD.toString())))
-            .andExpect(jsonPath("$.[*].link").value(hasItem(DEFAULT_LINK)))
-            .andExpect(jsonPath("$.[*].conectAt").value(hasItem(DEFAULT_CONECT_AT.booleanValue())));
+            .andExpect(jsonPath("$.[*].delAt").value(hasItem(DEFAULT_DEL_AT.booleanValue())));
     }
 
     @Test
@@ -203,11 +168,7 @@ class BoardResourceIT {
             .andExpect(jsonPath("$.id").value(board.getId().intValue()))
             .andExpect(jsonPath("$.title").value(DEFAULT_TITLE))
             .andExpect(jsonPath("$.content").value(DEFAULT_CONTENT))
-            .andExpect(jsonPath("$.delAt").value(DEFAULT_DEL_AT.booleanValue()))
-            .andExpect(jsonPath("$.oxprNm").value(DEFAULT_OXPR_NM))
-            .andExpect(jsonPath("$.isuYmd").value(DEFAULT_ISU_YMD.toString()))
-            .andExpect(jsonPath("$.link").value(DEFAULT_LINK))
-            .andExpect(jsonPath("$.conectAt").value(DEFAULT_CONECT_AT.booleanValue()));
+            .andExpect(jsonPath("$.delAt").value(DEFAULT_DEL_AT.booleanValue()));
     }
 
     @Test
@@ -229,14 +190,7 @@ class BoardResourceIT {
         Board updatedBoard = boardRepository.findById(board.getId()).get();
         // Disconnect from session so that the updates on updatedBoard are not directly saved in db
         em.detach(updatedBoard);
-        updatedBoard
-            .title(UPDATED_TITLE)
-            .content(UPDATED_CONTENT)
-            .delAt(UPDATED_DEL_AT)
-            .oxprNm(UPDATED_OXPR_NM)
-            .isuYmd(UPDATED_ISU_YMD)
-            .link(UPDATED_LINK)
-            .conectAt(UPDATED_CONECT_AT);
+        updatedBoard.title(UPDATED_TITLE).content(UPDATED_CONTENT).delAt(UPDATED_DEL_AT);
         BoardDTO boardDTO = boardMapper.toDto(updatedBoard);
 
         restBoardMockMvc
@@ -255,10 +209,6 @@ class BoardResourceIT {
         assertThat(testBoard.getTitle()).isEqualTo(UPDATED_TITLE);
         assertThat(testBoard.getContent()).isEqualTo(UPDATED_CONTENT);
         assertThat(testBoard.getDelAt()).isEqualTo(UPDATED_DEL_AT);
-        assertThat(testBoard.getOxprNm()).isEqualTo(UPDATED_OXPR_NM);
-        assertThat(testBoard.getIsuYmd()).isEqualTo(UPDATED_ISU_YMD);
-        assertThat(testBoard.getLink()).isEqualTo(UPDATED_LINK);
-        assertThat(testBoard.getConectAt()).isEqualTo(UPDATED_CONECT_AT);
     }
 
     @Test
@@ -345,7 +295,7 @@ class BoardResourceIT {
         Board partialUpdatedBoard = new Board();
         partialUpdatedBoard.setId(board.getId());
 
-        partialUpdatedBoard.delAt(UPDATED_DEL_AT).oxprNm(UPDATED_OXPR_NM).isuYmd(UPDATED_ISU_YMD).link(UPDATED_LINK);
+        partialUpdatedBoard.delAt(UPDATED_DEL_AT);
 
         restBoardMockMvc
             .perform(
@@ -363,10 +313,6 @@ class BoardResourceIT {
         assertThat(testBoard.getTitle()).isEqualTo(DEFAULT_TITLE);
         assertThat(testBoard.getContent()).isEqualTo(DEFAULT_CONTENT);
         assertThat(testBoard.getDelAt()).isEqualTo(UPDATED_DEL_AT);
-        assertThat(testBoard.getOxprNm()).isEqualTo(UPDATED_OXPR_NM);
-        assertThat(testBoard.getIsuYmd()).isEqualTo(UPDATED_ISU_YMD);
-        assertThat(testBoard.getLink()).isEqualTo(UPDATED_LINK);
-        assertThat(testBoard.getConectAt()).isEqualTo(DEFAULT_CONECT_AT);
     }
 
     @Test
@@ -381,14 +327,7 @@ class BoardResourceIT {
         Board partialUpdatedBoard = new Board();
         partialUpdatedBoard.setId(board.getId());
 
-        partialUpdatedBoard
-            .title(UPDATED_TITLE)
-            .content(UPDATED_CONTENT)
-            .delAt(UPDATED_DEL_AT)
-            .oxprNm(UPDATED_OXPR_NM)
-            .isuYmd(UPDATED_ISU_YMD)
-            .link(UPDATED_LINK)
-            .conectAt(UPDATED_CONECT_AT);
+        partialUpdatedBoard.title(UPDATED_TITLE).content(UPDATED_CONTENT).delAt(UPDATED_DEL_AT);
 
         restBoardMockMvc
             .perform(
@@ -406,10 +345,6 @@ class BoardResourceIT {
         assertThat(testBoard.getTitle()).isEqualTo(UPDATED_TITLE);
         assertThat(testBoard.getContent()).isEqualTo(UPDATED_CONTENT);
         assertThat(testBoard.getDelAt()).isEqualTo(UPDATED_DEL_AT);
-        assertThat(testBoard.getOxprNm()).isEqualTo(UPDATED_OXPR_NM);
-        assertThat(testBoard.getIsuYmd()).isEqualTo(UPDATED_ISU_YMD);
-        assertThat(testBoard.getLink()).isEqualTo(UPDATED_LINK);
-        assertThat(testBoard.getConectAt()).isEqualTo(UPDATED_CONECT_AT);
     }
 
     @Test

@@ -23,18 +23,6 @@
             <column name="del_at" type="boolean">
                 <constraints nullable="true" />
             </column>
-            <column name="oxpr_nm" type="varchar(100)">
-                <constraints nullable="true" />
-            </column>
-            <column name="isu_ymd" type="date">
-                <constraints nullable="true" />
-            </column>
-            <column name="link" type="varchar(256)">
-                <constraints nullable="true" />
-            </column>
-            <column name="conect_at" type="boolean">
-                <constraints nullable="true" />
-            </column>
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here -->
         </createTable>
     </changeSet>
@@ -59,10 +47,6 @@
             <column name="title" type="string"/>
             <column name="content" type="string"/>
             <column name="del_at" type="boolean"/>
-            <column name="oxpr_nm" type="string"/>
-            <column name="isu_ymd" type="date"/>
-            <column name="link" type="string"/>
-            <column name="conect_at" type="boolean"/>
             <!-- jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here -->
         </loadData>
     </changeSet>
