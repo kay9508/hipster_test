@@ -1,0 +1,28 @@
+{
+  "testApp": {
+    "boardComment": {
+      "home": {
+        "title": "BoardComments",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Board Comment",
+        "createOrEditLabel": "Créer ou éditer un Board Comment",
+        "notFound": "Aucun Board Comment trouvé"
+      },
+      "created": "Un nouveau Board Comment a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Board Comment avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Board Comment avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Êtes-vous certain de vouloir supprimer le Board Comment {{ id }} ?"
+      },
+      "detail": {
+        "title": "Board Comment"
+      },
+      "id": "Id",
+      "content": "Content",
+      "delAt": "Del At",
+      "boardReComments": "Board Re Comments",
+      "board": "Board",
+      "board": "Board"
+    }
+  }
+}

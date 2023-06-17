@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+    <!--
+        Added the constraints for entity BoardReComment.
+    -->
+    <changeSet id="20230617192343-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="board_coment_id"
+                                 baseTableName="board_re_comment"
+                                 constraintName="fk_board_re_comment__board_coment_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="board_comment"
+                                 />
+
+        <addForeignKeyConstraint baseColumnNames="board_comment_id"
+                                 baseTableName="board_re_comment"
+                                 constraintName="fk_board_re_comment__board_comment_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="board_comment"
+                                 />
+    </changeSet>
+</databaseChangeLog>

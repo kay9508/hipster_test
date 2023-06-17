@@ -1,0 +1,27 @@
+{
+  "testApp": {
+    "boardReComment": {
+      "home": {
+        "title": "BoardReComments",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Board Re Comment",
+        "createOrEditLabel": "Créer ou éditer un Board Re Comment",
+        "notFound": "Aucun Board Re Comment trouvé"
+      },
+      "created": "Un nouveau Board Re Comment a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Board Re Comment avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Board Re Comment avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Êtes-vous certain de vouloir supprimer le Board Re Comment {{ id }} ?"
+      },
+      "detail": {
+        "title": "Board Re Comment"
+      },
+      "id": "Id",
+      "content": "Content",
+      "delAt": "Del At",
+      "boardComent": "Board Coment",
+      "boardComment": "Board Comment"
+    }
+  }
+}

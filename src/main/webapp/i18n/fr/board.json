@@ -1,0 +1,31 @@
+{
+  "testApp": {
+    "board": {
+      "home": {
+        "title": "Boards",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Board",
+        "createOrEditLabel": "Créer ou éditer un Board",
+        "notFound": "Aucun Board trouvé"
+      },
+      "created": "Un nouveau Board a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Board avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Board avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Êtes-vous certain de vouloir supprimer le Board {{ id }} ?"
+      },
+      "detail": {
+        "title": "Board"
+      },
+      "id": "Id",
+      "title": "Title",
+      "content": "Content",
+      "delAt": "Del At",
+      "oxprNm": "Oxpr Nm",
+      "isuYmd": "Isu Ymd",
+      "link": "Link",
+      "conectAt": "Conect At",
+      "boardComments": "Board Comments"
+    }
+  }
+}

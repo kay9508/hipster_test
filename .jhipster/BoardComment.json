@@ -1,0 +1,39 @@
+{
+  "applications": "*",
+  "changelogDate": "20230617192342",
+  "dto": "mapstruct",
+  "entityTableName": "board_comment",
+  "fields": [
+    {
+      "fieldName": "id",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "content",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "5000"
+    },
+    {
+      "fieldName": "delAt",
+      "fieldType": "Boolean"
+    }
+  ],
+  "name": "BoardComment",
+  "relationships": [
+    {
+      "otherEntityName": "boardReComment",
+      "relationshipName": "boardReComments",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "board",
+      "relationshipName": "board",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceClass"
+}

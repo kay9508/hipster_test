@@ -1,0 +1,58 @@
+{
+  "applications": "*",
+  "changelogDate": "20230617192341",
+  "dto": "mapstruct",
+  "entityTableName": "board",
+  "fields": [
+    {
+      "fieldName": "id",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "title",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "100"
+    },
+    {
+      "fieldName": "content",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "delAt",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "oxprNm",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "100"
+    },
+    {
+      "fieldName": "isuYmd",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "link",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "256"
+    },
+    {
+      "fieldName": "conectAt",
+      "fieldType": "Boolean"
+    }
+  ],
+  "name": "Board",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "otherEntityName": "boardComment",
+      "relationshipName": "boardComments",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceClass"
+}
